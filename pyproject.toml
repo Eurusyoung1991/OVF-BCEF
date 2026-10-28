@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ovf-bcef"
+version = "0.1.0"
+description = "Base-guided Constrained Expert-bank Fusion of nine probability scores"
+readme = "README.md"
+license = {file = "LICENSE"}
+authors = [{name = "Eurusyoung1991"}]
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24,<3"]
+
+[project.optional-dependencies]
+train = ["torch>=2.0,<3", "scikit-learn>=1.3,<2", "tqdm>=4.66,<5"]
+
+[project.scripts]
+bcef-train = "bcef.cli:train_main"
+bcef-predict = "bcef.cli:predict_main"
+bcef-synthetic = "bcef.synthetic:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
